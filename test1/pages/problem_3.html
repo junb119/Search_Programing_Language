@@ -1,0 +1,71 @@
+<!-- 본 파일은 절대로 수정하지 않습니다. -->
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/problem_3.css" />
+  </head>
+
+  <body>
+    <h1>3. 개인 정보 보호 기능이 필요해</h1>
+    <hr />
+    <div class="toggle-btn-area">
+      <div class="toggle">
+        <div class="title">정보 공개</div>
+        <div class="status">OFF</div>
+        <input type="checkbox" id="toggleProtection" />
+        <label class="toggle__bar" for="toggleProtection">
+          <span class="toggle__handle"></span>
+        </label>
+        <div class="status">ON</div>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+    <a href="../index.html" class="back-link">&#8592; 뒤로가기</a>
+    <script>
+      fetch("../data/data3.json")
+        .then((res) => res.json())
+        .then((data) => {
+          const tableData = document.getElementById("table-body");
+
+          data.forEach((item) => {
+            const row = document.createElement("tr");
+
+            const userNameCell = document.createElement("td");
+            userNameCell.textContent = item.profile.name;
+            const emailCell = document.createElement("td");
+            emailCell.textContent = item.email;
+
+            row.appendChild(userNameCell);
+            row.appendChild(emailCell);
+
+            tableData.appendChild(row);
+          });
+        })
+        .catch((error) => {
+          console.error(`에러 발생: ${error}`);
+        });
+
+      window.onload = function () {
+        const currentUrl = window.location.href;
+
+        if (currentUrl.includes("web")) {
+          const link = document.querySelector(".back-link");
+          link.href = `../`;
+        }
+      };
+    </script>
+    <script type="module" src="../scripts/problem_3.js"></script>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+
+
+
+/* 본 파일은 절대로 수정하지 않습니다. */
+
+table {
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid black;
+}
+
+th {
+  background-color: #ddd;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.toggle-btn-area {
+  padding: 0px 7px; 
+}
+
+.toggle {
+  --toggle-height: 25px;
+  
+  --toggle-bar-color: #707070;
+  --toggle-active-color: #00bfb5;
+  --toggle-handle-color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+
+.toggle > .title {
+  margin-right: 10px;
+}
+
+.toggle > .status {
+ margin: 0px 7px; 
+}
+
+.toggle > input[type="checkbox"] {
+  display:none;
+}
+
+.toggle__bar {
+  display: flex;
+  align-items: center;
+  
+  height: 12px; /* default */
+  min-height: var(--toggle-height);
+  aspect-ratio: 1.75 / 1;
+  border-radius: 25% / 50%;
+  
+  background-color: var(--toggle-bar-color);
+  
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.toggle__handle {
+  display:block;
+  
+  height: inherit;
+  min-height: var(--toggle-height);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  transform: scale(0.8);
+  
+  background-color: var(--toggle-handle-color);
+  box-shadow: 1px 1px 15px -2px rgba(0,0,0,0.75);
+  
+  transition: all 0.1s ease-in-out;
+}
+
+.toggle > input[type="checkbox"]:checked + .toggle__bar {
+  background-color: 
+    var(--toggle-active-color);
+}
+
+.toggle > input[type="checkbox"]:checked + .toggle__bar > .toggle__handle {
+  box-shadow: 
+    -1px 1px 15px -2px rgba(0,0,0,0.75);
+  
+  transform: translateX(74%) scale(0.8);
+}
+
+.back-link {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  margin-top: 30px;
+  padding: 10px 15px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.back-link:hover {
+  background-color: #333;
+  color: #fff;
+}

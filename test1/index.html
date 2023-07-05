@@ -1,0 +1,52 @@
+<!-- 본 파일은 절대로 수정하지 않습니다. -->
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Questrial&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul class="navbar__list">
+        <li class="navbar__item">
+          <a href="./pages/problem_1.html" class="navbar__link" id="link1"
+            >1. 편리한 기능이 필요해</a
+          >
+        </li>
+        <li class="navbar__item">
+          <a href="./pages/problem_2.html" class="navbar__link" id="link2"
+            >2. 검색이 필요해</a
+          >
+        </li>
+        <li class="navbar__item">
+          <a href="./pages/problem_3.html" class="navbar__link" id="link3"
+            >3. 개인 정보 보호 기능이 필요해</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <script>
+      // 본 파일은 절대로 수정하지 않습니다.
+      window.onload = function () {
+        const linkIds = ["link1", "link2", "link3"];
+        const problemNumbers = ["1", "2", "3"];
+        const currentUrl = window.location.href;
+
+        if (currentUrl.includes("web")) {
+          linkIds.forEach((id, index) => {
+            const link = document.querySelector(`#${id}`);
+            link.href = `./web/pages/problem_${problemNumbers[index]}.html`;
+          });
+        }
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!-- 본 파일은 절대로 수정하지 않습니다. -->
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/problem_1.css" />
+  </head>
+
+  <body>
+    <h1>1. 편리한 기능이 필요해</h1>
+    <hr />
+
+    <input type="checkbox" id="filter-verified" />Filter Verified Items
+
+    <table id="table">
+      <thead>
+        <tr>
+          <th id="index-header" class="sortable" data-sortby="index">Index</th>
+          <th id="nickname-header" class="sortable" data-sortby="nickname">
+            Nickname
+          </th>
+          <th
+            id="date-of-hire-header"
+            class="sortable"
+            data-sortby="dateOfHire"
+          >
+            Date of Hire
+          </th>
+          <th>Verified</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+    <a href="../index.html" class="back-link">&#8592; 뒤로가기</a>
+    <button class="scroll-up" id="topBtn">TOP</button>
+    <script>
+      // 본 파일은 절대로 수정하지 않습니다.
+      fetch("./../data/data.json")
+        .then((response) => response.json())
+        .then((data) => {
+          const renderTable = () => {
+            const tableBody = document.getElementById("table-body");
+
+            while (tableBody.firstChild) {
+              tableBody.removeChild(tableBody.firstChild);
+            }
+
+            data.forEach((item) => {
+              const row = document.createElement("tr");
+              const indexCell = document.createElement("td");
+              indexCell.textContent = item.index;
+              row.appendChild(indexCell);
+              const nicknameCell = document.createElement("td");
+              nicknameCell.textContent = item.nickname;
+              row.appendChild(nicknameCell);
+              const dateOfHireCell = document.createElement("td");
+              const dateOfHire = new Date(item.dateOfHire);
+              dateOfHireCell.textContent = dateOfHire.toLocaleDateString();
+              row.appendChild(dateOfHireCell);
+              const verifiedCell = document.createElement("td");
+              verifiedCell.textContent = item.verified ? "Yes" : "No";
+              row.appendChild(verifiedCell);
+              tableBody.appendChild(row);
+            });
+          };
+          renderTable();
+        })
+        .catch((error) => {
+          console.error(`에러 발생: ${error}`);
+        });
+
+      window.onload = function () {
+        const currentUrl = window.location.href;
+
+        if (currentUrl.includes("web")) {
+          const link = document.querySelector(".back-link");
+          link.href = `../`;
+        }
+      };
+    </script>
+    <script type="module" src="../scripts/problem_1.js"></script>
+  </body>
+</html>
