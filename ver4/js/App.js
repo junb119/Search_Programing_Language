@@ -56,4 +56,7 @@ export default function App(target) {
     // console.log("nextSelectedLanguages", nextSelectedLanguages);
     this.setState({ selectedLanguages: nextSelectedLanguages });
   });
+
+  console.log('test')
+  console.log('test2')
 }
