@@ -21,7 +21,7 @@ export default function App(target) {
     suggestion.setState({
       selectedIndex: 0,
       items: this.state.fetchedLanguages,
-      currentInputValue: this.state.currentInputValue,
+      keyword: this.state.currentInputValue,
     });
 
     selectedLanguages.setState({
@@ -31,7 +31,6 @@ export default function App(target) {
   // selectedLanguages 컴포넌트 생성
   const selectedLanguages = new SelectedLanguages(target, (countLimit) => {
     const startIndex = this.state.selectedLanguages.length - countLimit;
-
     this.setState({
       selectedLanguages: this.state.selectedLanguages.slice(startIndex),
     });
